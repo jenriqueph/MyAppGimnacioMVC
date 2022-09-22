@@ -1,0 +1,38 @@
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: black;
+}
+
+.body-2 {
+    background-color: white;
+}
+
+.text-tabla {
+    text-align: center;
+    font-size: small;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: min-content;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}

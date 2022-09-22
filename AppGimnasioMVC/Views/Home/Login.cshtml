@@ -1,0 +1,33 @@
+﻿@model Persona
+@{
+    ViewData["Title"] = "Inicio de sesión";
+}
+<div class="row mt-5">
+    <div class="col-sm-4 offset-sm-4">
+        <div class="text-center">
+            <form asp-controller="Home" asp-action="Login" method="post">
+                <img class="mb-4" src="~/img/Avatar-Login.png" alt="" width="200" height="180">
+                <h1 style="color: white;" class="h3 mb-3 fw-normal">@ViewData["Title"]</h1>
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" placeholder="name@example.com" asp-for="Email">
+                        <label for="floatingInput">Correo electrónico</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-floating">
+                        <input type="password" class="form-control" placeholder="Password" asp-for="Contrasenia">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+                <p class="mt-5 mb-3 text-muted">© 2022</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

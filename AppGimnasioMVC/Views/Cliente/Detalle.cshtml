@@ -1,0 +1,31 @@
+﻿@model AppGimnasioMVC.Models.Cliente
+@{
+    ViewData["Title"] = "Detalle cliente";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">@ViewData["Title"]: @Html.DisplayFor(m => m.Id)</h2>
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">@Html.DisplayNameFor(m => m.NumeroIdentificacion): @Html.DisplayFor(m => m.NumeroIdentificacion)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.TipoDocIdentificacion): @Html.DisplayFor(m => m.TipoDocIdentificacion)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Nombres): @Html.DisplayFor(m => m.Nombres)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Apellidos): @Html.DisplayFor(m => m.Apellidos)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Direccion): @Html.DisplayFor(m => m.Direccion)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Email): @Html.DisplayFor(m => m.Email)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Contrasenia): @Html.DisplayFor(m => m.Contrasenia)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Celular): @Html.DisplayFor(m => m.Celular)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.FechaNacimiento): @Html.DisplayFor(m => m.FechaNacimiento)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Genero): @Html.DisplayFor(m => m.Genero)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Rol): @Html.DisplayFor(m => m.Rol)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Peso): @Html.DisplayFor(m => m.Peso)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Bloqueado): @Html.DisplayFor(m => m.Bloqueado)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,14 @@
 ﻿using AppGimnasioMVC.Datos;
 using AppGimnasioMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace AppGimnasioMVC.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ClienteController : Controller
     {
         private readonly ApplicationDbContext _contexto;
@@ -16,6 +17,7 @@ namespace AppGimnasioMVC.Controllers
         {
             _contexto = contexto;
         }
+
         [Authorize(Roles ="Administrador, Entrenador")]
         [HttpGet]
         public async Task<IActionResult> Index(string filtroApellido, string filtroIdentificacion)
@@ -60,6 +62,7 @@ namespace AppGimnasioMVC.Controllers
             }
             return View();
         }
+
         [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Detalle(int? id)
@@ -145,17 +148,6 @@ namespace AppGimnasioMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        /*
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-        */
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

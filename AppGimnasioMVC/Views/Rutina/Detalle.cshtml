@@ -1,0 +1,27 @@
+﻿@model AppGimnasioMVC.Models.Rutina
+@{
+    ViewData["Title"] = "Detalle Rutina";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">@ViewData["Title"]: @Html.DisplayFor(m => m.Id)</h2>
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">@Html.DisplayNameFor(m => m.Codigo): @Html.DisplayFor(m => m.Codigo)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.NombreRutina): @Html.DisplayFor(m => m.NombreRutina)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Ejercicio1): @Html.DisplayFor(m => m.Ejercicio1)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Ejercicio2): @Html.DisplayFor(m => m.Ejercicio2)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Ejercicio3): @Html.DisplayFor(m => m.Ejercicio3)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Ejercicio4): @Html.DisplayFor(m => m.Ejercicio4)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Ejercicio5): @Html.DisplayFor(m => m.Ejercicio5)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Cardio): @Html.DisplayFor(m => m.Cardio)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Bloqueado): @Html.DisplayFor(m => m.Bloqueado)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+</div>

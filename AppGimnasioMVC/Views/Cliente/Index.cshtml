@@ -24,7 +24,7 @@
                         <div class="collapse navbar-collapse" id="navbarColor03">
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item">
-                                    <a asp-action="MenuAdministrador" asp-controller="Home" class="btn btn-primary">Regresar</a>
+                                    <a asp-action="Index" asp-controller="Menu" class="btn btn-primary">Regresar</a>
                                 </li>
                                 <li> <p> . </p> </li>
                                 <li class="nav-item">
@@ -32,9 +32,9 @@
                                 </li>
                             </ul>
                             <form asp-controller="Cliente" asp-action="Index" method="get" class="d-flex">
-                                <input class="form-control me-sm-2" type="text" name="filtroIdentificacion" value=@TempData["MIdentificacion"] placeholder ="Número de Identificación">
+                                <input class="form-control me-sm-2" type="text" name="filtroIdentificacion" value=@TempData["MIdentificacion"] placeholder="Número de Identificación">
                                 <input class="form-control me-sm-2" type="text" name="filtroApellido" value=@TempData["MApellido"] placeholder="Apellidos">
-                                <button class="btn btn-secondary my-2 my-sm-0" type="submit" >Buscar</button>
+                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                     <th scope="col">@Html.DisplayNameFor(m => m.Email)</th>
                                     <th scope="col">@Html.DisplayNameFor(m => m.Celular)</th>
                                     <th scope="col">Detalle</th>
-                                    <th scope ="col">Editar</th>
+                                    <th scope="col">Editar</th>
                                     <th scope="col">Borrar</th>
                                 </tr>
                             </thead>
@@ -77,12 +77,9 @@
                                             </a>
                                         </td>
                                         <td>
-                                            @if (User.IsInRole("Administrador"))
-                                            {
-                                                <a class="btn btn-danger table-btn" asp-action="Borrar" asp-route-id="@item.Id">
-                                                    <i class="fas fa-trash fa-lg" aria-hidden="true"> </i>
-                                                </a>
-                                            }
+                                            <a class="btn btn-danger table-btn" asp-action="Borrar" asp-route-id="@item.Id">
+                                                <i class="fas fa-trash fa-lg" aria-hidden="true"> </i>
+                                            </a>
                                         </td>
                                     </tr>
                                 }

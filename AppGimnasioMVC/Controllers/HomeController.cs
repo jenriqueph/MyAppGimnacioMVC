@@ -62,14 +62,9 @@ namespace AppGimnasioMVC.Controllers
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdenttity));
 
-                return RedirectToAction("MenuAdministrador", "Home");
+                return RedirectToAction("Index", "Menu");
             }
 
-        }
-
-        public IActionResult MenuAdministrador()
-        {
-            return View();
         }
 
         public IActionResult Denegado()

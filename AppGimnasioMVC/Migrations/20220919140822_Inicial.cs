@@ -46,12 +46,12 @@ namespace AppGimnasioMVC.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Ejercicio1 = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Ejercicio2 = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Ejercicio3 = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Ejercicio4 = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Ejercicio5 = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Cardio = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
+                    Ejercicio1 = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    Ejercicio2 = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: true),
+                    Ejercicio3 = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: true),
+                    Ejercicio4 = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: true),
+                    Ejercicio5 = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: true),
+                    Cardio = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: true),
                     Bloqueado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@model IEnumerable<AppGimnasioMVC.Models.Mensualidad>
+@model IEnumerable<AppGimnasioMVC.Models.Persona>
 @{
-    ViewData["Title"] = "Gestionar Mensualidades";
+    ViewData["Title"] = "Gestionar Usuarios";
 }
 
 @if (TempData["Mensaje"] != null)
@@ -28,12 +28,12 @@
                                 </li>
                                 <li> <p> . </p> </li>
                                 <li class="nav-item">
-                                    <a asp-action="Crear" asp-controller="Mensualidad" class="btn btn-success">Nueva Mesualidad</a>
+                                    <a asp-action="Crear" asp-controller="Usuario" class="btn btn-success">Nuevo Usuario</a>
                                 </li>
                             </ul>
-                            <form asp-controller="Mensualidad" asp-action="Index" method="get" class="d-flex">
+                            <form asp-controller="Usuario" asp-action="Index" method="get" class="d-flex">
                                 <input class="form-control me-sm-2" type="text" name="filtroIdentificacion" value=@TempData["MIdentificacion"] placeholder="Número de Identificación">
-                                <input class="form-control me-sm-2" type="date" name="filtroFechaR" value=@TempData["MFechaR"] placeholder="Fecha">
+                                <input class="form-control me-sm-2" type="text" name="filtroApellido" value=@TempData["MApellido"] placeholder="Apellidos">
                                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
                         </div>
@@ -47,12 +47,12 @@
                         <table class="table table-striped table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr class="table-primary">
-                                    <th scope="col">@Html.DisplayNameFor(m => m.Fecha)</th>
-                                    <th scope="col">@Html.DisplayNameFor(m => m.FechaInicio)</th>
-                                    <th scope="col">@Html.DisplayNameFor(m => m.FechaFin)</th>
-                                    <th scope="col">@Html.DisplayNameFor(m => m.Cliente.NumeroIdentificacion)</th>
-                                    <th scope="col">@Html.DisplayNameFor(m => m.Cliente.Nombres)</th>
-                                    <th scope="col">Rutina</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.NumeroIdentificacion)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.Nombres)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.Apellidos)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.Email)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.Celular)</th>
+                                    <th scope="col">@Html.DisplayNameFor(m => m.Rol)</th>
                                     <th scope="col">Detalle</th>
                                     <th scope="col">Editar</th>
                                     <th scope="col">Borrar</th>
@@ -62,16 +62,12 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <th scope="row">@Html.DisplayFor(m => item.Fecha)</th>
-                                        <td>@Html.DisplayFor(m => item.FechaInicio)</td>
-                                        <td>@Html.DisplayFor(m => item.FechaFin)</td>
-                                        <td>@Html.DisplayFor(m => item.Cliente.NumeroIdentificacion)</td>
-                                        <td>@Html.DisplayFor(m => item.Cliente.Nombres)</td>
-                                        <td>
-                                            <a class="btn btn-warning table-btn" asp-action="Rutina" asp-route-id="@item.Id">
-                                                <i class="fas fa-running fa-lg"> </i>
-                                            </a>
-                                        </td>
+                                        <th scope="row">@Html.DisplayFor(m => item.NumeroIdentificacion)</th>
+                                        <td>@Html.DisplayFor(m => item.Nombres)</td>
+                                        <td>@Html.DisplayFor(m => item.Apellidos)</td>
+                                        <td>@Html.DisplayFor(m => item.Email)</td>
+                                        <td>@Html.DisplayFor(m => item.Celular)</td>
+                                        <td>@Html.DisplayFor(m => item.Rol)</td>
                                         <td>
                                             <a class="btn btn-secondary table-btn" asp-action="Detalle" asp-route-id="@item.Id">
                                                 <i class="fas fa-info-circle"> </i>

@@ -4,6 +4,7 @@ using AppGimnasioMVC.Datos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppGimnasioMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220927014928_ModCliente")]
+    partial class ModCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +59,6 @@ namespace AppGimnasioMVC.Migrations
                     b.Property<bool>("Bloqueado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
@@ -73,8 +72,6 @@ namespace AppGimnasioMVC.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
 
                     b.ToTable("Mensualidad");
                 });
@@ -162,8 +159,8 @@ namespace AppGimnasioMVC.Migrations
 
                     b.Property<string>("Codigo")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Ejercicio1")
                         .IsRequired()
@@ -188,8 +185,8 @@ namespace AppGimnasioMVC.Migrations
 
                     b.Property<string>("NombreRutina")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
@@ -200,11 +197,16 @@ namespace AppGimnasioMVC.Migrations
                 {
                     b.HasBaseType("AppGimnasioMVC.Models.Persona");
 
+                    b.Property<int?>("MensualidadId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Peso")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("RutinaId")
                         .HasColumnType("int");
+
+                    b.HasIndex("MensualidadId");
 
                     b.HasIndex("RutinaId");
 
@@ -234,22 +236,17 @@ namespace AppGimnasioMVC.Migrations
                     b.Navigation("Cliente");
                 });
 
-            modelBuilder.Entity("AppGimnasioMVC.Models.Mensualidad", b =>
-                {
-                    b.HasOne("AppGimnasioMVC.Models.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
             modelBuilder.Entity("AppGimnasioMVC.Models.Cliente", b =>
                 {
+                    b.HasOne("AppGimnasioMVC.Models.Mensualidad", "Mensualidad")
+                        .WithMany()
+                        .HasForeignKey("MensualidadId");
+
                     b.HasOne("AppGimnasioMVC.Models.Rutina", "Rutina")
                         .WithMany()
                         .HasForeignKey("RutinaId");
+
+                    b.Navigation("Mensualidad");
 
                     b.Navigation("Rutina");
                 });

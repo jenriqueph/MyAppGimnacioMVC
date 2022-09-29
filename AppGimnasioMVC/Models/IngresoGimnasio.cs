@@ -5,7 +5,7 @@ namespace AppGimnasioMVC.Models
 {
     public class IngresoGimnasio
     {
-        [Key]
+       [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "La fecha de ingreso es obligatoria.")]
         [DataType(DataType.Date)]
@@ -13,5 +13,11 @@ namespace AppGimnasioMVC.Models
         public DateTime FechaIngreso { get; set; }
         [Required(ErrorMessage = "El campo bloqueado es obligatorio.")]
         public Boolean Bloqueado { get; set; }
+        
+        [Required(ErrorMessage = "El cliente es obligatorio.")]
+        [Display(Name = "Cliente")]
+        public int ClienteId { get; set; }
+        
+        public Cliente Cliente { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lb2IsgGkDkyrbs0V84ODd522Fxt9vKTzADMYK7A5Pxg=",
+  "Hash": "r+sWDmO09rnrkYo5tgN/Bt+BA91MtqSNnzlJ2Mh4XVU=",
   "Source": "AppGimnasioMVC",
   "BasePath": "_content/AppGimnasioMVC",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Avatar-Rutina.png"
+    },
+    {
+      "Identity": "C:\\Desarrollo de Software\\Proyectos\\AppGimnasioMVC\\AppGimnasioMVC\\wwwroot\\img\\Avatar-Usuario.png",
+      "SourceId": "AppGimnasioMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Desarrollo de Software\\Proyectos\\AppGimnasioMVC\\AppGimnasioMVC\\wwwroot\\",
+      "BasePath": "_content/AppGimnasioMVC",
+      "RelativePath": "img/Avatar-Usuario.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Avatar-Usuario.png"
     },
     {
       "Identity": "C:\\Desarrollo de Software\\Proyectos\\AppGimnasioMVC\\AppGimnasioMVC\\wwwroot\\img\\favicon.ico",

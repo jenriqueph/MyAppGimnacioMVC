@@ -1,0 +1,70 @@
+﻿@model AppGimnasioMVC.Models.Cliente
+@{
+    ViewData["Title"] = "Asigar Rutina";
+}
+
+<div class="row">
+    <div class="col-sm-7 offset-2">
+        <div class="card border">
+            <div class="card-header">
+                <h2 class="text-info">@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Cliente" asp-action="Rutina" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!--Enviar el ID del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="NumeroIdentificacion" class="control-label"></label>
+                        <input asp-for="NumeroIdentificacion" class="form-control" placeholder="Ingresar número de identificación sin punto ni guiones" readonly />
+                        <span asp-validation-for="NumeroIdentificacion" class="text-danger"></span>
+                    </div>
+                    <!--Enviar el TipoDocIdentificacion del cliente como campo oculto-->
+                    <input type="hidden" asp-for="TipoDocIdentificacion" />
+                    <div class="form-group">
+                        <label asp-for="Nombres" class="control-label"></label>
+                        <input asp-for="Nombres" class="form-control" placeholder="Ingrese los nombres" readonly/>
+                        <span asp-validation-for="Nombres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Apellidos" class="control-label"></label>
+                        <input asp-for="Apellidos" class="form-control" placeholder="Ingrese los apellidos" readonly/>
+                        <span asp-validation-for="Apellidos" class="text-danger"></span>
+                    </div>
+                    <!--Enviar el Direccion del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Direccion" />
+                    <!--Enviar el Email del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Email" />
+                    <!--Enviar el Contrasenia del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Contrasenia" />
+                    <!--Enviar el Celular del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Celular" />
+                    <!--Enviar el FechaNacimiento del cliente como campo oculto-->
+                    <input type="hidden" asp-for="FechaNacimiento" />
+                    <!--Enviar el Genero del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Genero" />
+                    <!--Enviar el Rol del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Rol" />
+                    <!--Enviar el Peso del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Peso" />
+                    <div class="form-group">
+                        <label asp-for="RutinaId" class="control-label"></label>
+                        <select asp-for="RutinaId" class="form-select" aria-label="Default select example" asp-items="ViewBag.Rutinas"></select>
+                        <span asp-validation-for="RutinaId" class="text-danger"></span>
+                    </div>
+                    <!--Enviar el Bloqueado del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Bloqueado" />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Asignar Rutina</button>
+                        <a asp-action="Index" class="btn btn-primary">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

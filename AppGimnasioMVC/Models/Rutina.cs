@@ -4,16 +4,25 @@ namespace AppGimnasioMVC.Models
 {
     public class Rutina
     {
+        /*
+        public Rutina()
+        {
+            Clientes = new HashSet<Cliente>();
+        }
+
+        public virtual ICollection<Cliente> Clientes { get; set; }
+        */
+
         [Key]
         public int Id { get; set; }
         
         [Required(ErrorMessage = "El campo código es obligatorio.")]
-        [StringLength(20, ErrorMessage = "{0} El código de la rutina debe tener entre {2} y {1}.", MinimumLength = 4)]
+        [StringLength(40, ErrorMessage = "{0} El código de la rutina debe tener entre {2} y {1}.", MinimumLength = 4)]
         [Display(Name = "Código")]
         public string Codigo { get; set; }
         
         [Required(ErrorMessage = "El campo descripción es obligatorio.")]
-        [StringLength(20, ErrorMessage = "{0} El nombre de la rutina debe tener entre {2} y {1}.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "{0} El nombre de la rutina debe tener entre {2} y {1}.", MinimumLength = 1)]
         [Display(Name = "Nombre Rutina")]
         public string NombreRutina { get; set; }
 

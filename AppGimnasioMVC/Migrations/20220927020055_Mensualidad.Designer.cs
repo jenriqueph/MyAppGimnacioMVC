@@ -4,6 +4,7 @@ using AppGimnasioMVC.Datos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppGimnasioMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220927020055_Mensualidad")]
+    partial class Mensualidad
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,6 +40,9 @@ namespace AppGimnasioMVC.Migrations
 
                     b.Property<DateTime>("FechaIngreso")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -68,6 +73,9 @@ namespace AppGimnasioMVC.Migrations
 
                     b.Property<DateTime>("FechaInicio")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PersonaId")
+                        .HasColumnType("int");
 
                     b.Property<double>("ValorMensualidad")
                         .HasColumnType("float");

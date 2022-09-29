@@ -1,12 +1,10 @@
 ﻿using AppGimnasioMVC.Datos;
 using AppGimnasioMVC.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
 
 namespace AppGimnasioMVC.Controllers
 {
@@ -15,10 +13,12 @@ namespace AppGimnasioMVC.Controllers
     {
         private readonly ApplicationDbContext _contexto;
 
+
         public HomeController(ApplicationDbContext contexto)
         {
             _contexto = contexto;
         }
+
 
         public IActionResult Index()
         {
@@ -43,7 +43,6 @@ namespace AppGimnasioMVC.Controllers
         public async Task<IActionResult> Login(Persona _usuario)
         {
             var usuario = ValidarUsuario(_usuario.Email, _usuario.Contrasenia);
-            
 
             if (usuario == null)
             {
@@ -51,6 +50,7 @@ namespace AppGimnasioMVC.Controllers
             }
             else
             {
+                TempData["xxx"] = usuario.Nombres;
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, usuario.Nombres),
@@ -58,7 +58,7 @@ namespace AppGimnasioMVC.Controllers
                     new Claim(ClaimTypes.Role, usuario.Rol.ToString())
                 };
 
-                var claimIdenttity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); 
+                var claimIdenttity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimIdenttity));
 

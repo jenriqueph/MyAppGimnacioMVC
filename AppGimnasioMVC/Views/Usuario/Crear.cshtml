@@ -1,16 +1,16 @@
-﻿@model AppGimnasioMVC.Models.Cliente
+﻿@model AppGimnasioMVC.Models.Persona
 @{
-    ViewData["Title"] = "Crear Clientes";
+    ViewData["Title"] = "Crear Nuevo Usuario";
 }
 
 <div class="row">
     <div class="col-sm-7 offset-2">
         <div class="card border">
             <div class="card-header">
-                <h2 class="text-center">@ViewData["Title"]</h2>
+                <h3 class="text-center">@ViewData["Title"]</h3>
             </div>
             <div class="card-body">
-                <form asp-controller="Cliente" asp-action="Crear" method="post">
+                <form asp-controller="Usuario" asp-action="Crear" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="NumeroIdentificacion" class="control-label"></label>
@@ -66,13 +66,9 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Rol" class="control-label"></label>
-                        <input asp-for="Rol" class="form-control" value="@Rol.Cliente" placeholder="Ingrese el Rol" readonly/>
+                        <select class="form-select" aria-label="Default select example" asp-for="Rol" asp-items="Html.GetEnumSelectList<Rol>()">
+                        </select>
                         <span asp-validation-for="Rol" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Peso" class="control-label"></label>
-                        <input asp-for="Peso" class="form-control" placeholder="Ingrese el peso en kg" />
-                        <span asp-validation-for="Peso" class="text-danger"></span>
                     </div>
                     <div class="form-check form-switch">
                         <label class="form-check-label" asp-for="Bloqueado"></label>
@@ -80,7 +76,7 @@
                         <span asp-validation-for="Bloqueado" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">Crear Cliente</button>
+                        <button type="submit" class="btn btn-success">Crear Usuario</button>
                         <a asp-action="Index" class="btn btn-primary">Regresar</a>
                     </div>
                 </form>

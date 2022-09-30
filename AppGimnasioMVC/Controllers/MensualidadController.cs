@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Diagnostics;
 
 namespace AppGimnasioMVC.Controllers
@@ -22,9 +23,6 @@ namespace AppGimnasioMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(DateTime filtroFechaR, string filtroIdentificacion)
         {
-            //var clientes = from cliente in await _contexto.Cliente.Include(r => r.Rutina).ToListAsync() select cliente;
-            //var clientes = await _contexto.Cliente.Include(r => r.Rutina).ToListAsync();
-            //var clientes = from Cliente in await _contexto.Cliente.Include(r => r.Rutina).ToListAsync() select Cliente;
             var mensualidades = from Mensualidad in await _contexto.Mensualidad.Include(c => c.Cliente).ToListAsync() select Mensualidad;
 
             if (!String.IsNullOrEmpty(filtroIdentificacion) & filtroFechaR != DateTime.MinValue)
@@ -42,9 +40,9 @@ namespace AppGimnasioMVC.Controllers
 
             TempData["MIdentificacion"] = filtroIdentificacion;
             TempData["MFechaR"] = filtroFechaR;
-            //return View(await clientes.ToListAsync());
             return View(mensualidades);
         }
+
 
         [Authorize(Roles = "Administrador")]
         [HttpGet]
@@ -52,9 +50,7 @@ namespace AppGimnasioMVC.Controllers
         {
             ViewData["Fecha"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now));
             ViewData["FechaI"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now.AddDays(1)));
-            ViewData["FechaF"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now.AddMonths(1).AddDays(1)));
-            ViewData["Clientes"] = new SelectList(_contexto.Cliente, "Id", "NumeroIdentificacion");
-            
+            ViewData["FechaF"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now.AddMonths(1).AddDays(1)));            
             return View();
         }
 
@@ -66,7 +62,6 @@ namespace AppGimnasioMVC.Controllers
             ViewData["Fecha"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now));
             ViewData["FechaI"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now.AddDays(1)));
             ViewData["FechaF"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now.AddMonths(1).AddDays(1)));
-            //ViewData["Clientes"] = new SelectList(_contexto.Cliente, "Id", "NumeroIdentificacion", mensualidad.ClienteId);
             TempData["MIdentificacion"] = filtroIdentificacion;
             TempData["Mensaje"] = null;
 
@@ -97,41 +92,6 @@ namespace AppGimnasioMVC.Controllers
         }
 
 
-        [Authorize(Roles = "Administrador, Entrenador")]
-        [HttpGet]
-        public IActionResult Rutina(int? id)
-        {
-            ViewData["Rutinas"] = new SelectList(_contexto.Rutina, "Id", "Codigo");
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cliente = _contexto.Cliente.Find(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
-
-            return View(cliente);
-        }
-
-        [Authorize(Roles = "Administrador, Entrenador")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Rutina(Cliente cliente)
-        {
-            if (ModelState.IsValid)
-            {
-                _contexto.Cliente.Update(cliente);
-                await _contexto.SaveChangesAsync();
-                TempData["Mensaje"] = "Se Asigno la Rutina correctamente";
-                return RedirectToAction("Index");
-            }
-            ViewData["Rutinas"] = new SelectList(_contexto.Rutina, "Id", "Codigo", cliente.RutinaId);
-            return View(cliente);
-        }
-
         [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Detalle(int? id)
@@ -141,13 +101,16 @@ namespace AppGimnasioMVC.Controllers
                 return NotFound();
             }
 
-            var cliente = _contexto.Cliente.Find(id);
-            if (cliente == null)
+            var mensualidad = _contexto.Mensualidad.Where(m => m.Id == id)
+                                            .Include(c => c.Cliente)
+                                            .FirstOrDefault();
+
+            if (mensualidad == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(mensualidad);
         }
 
         [Authorize(Roles = "Administrador")]
@@ -159,28 +122,31 @@ namespace AppGimnasioMVC.Controllers
                 return NotFound();
             }
 
-            var cliente = _contexto.Cliente.Find(id);
-            if (cliente == null)
+            var mensualidad = _contexto.Mensualidad.Where(m => m.Id == id)
+                                            .Include(c => c.Cliente)
+                                            .FirstOrDefault();
+
+            if (mensualidad == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(mensualidad);
         }
 
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Editar(Cliente cliente)
+        public async Task<IActionResult> Editar(Mensualidad mensualidad)
         {
             if (ModelState.IsValid)
             {
-                _contexto.Cliente.Update(cliente);
+                _contexto.Mensualidad.Update(mensualidad);
                 await _contexto.SaveChangesAsync();
-                TempData["Mensaje"] = "El cliente se edito correctamente";
+                TempData["Mensaje"] = "La Mensualiadad se edito correctamente";
                 return RedirectToAction("Index");
             }
-            return View(cliente);
+            return View(mensualidad);
         }
 
         [Authorize(Roles = "Administrador")]
@@ -192,13 +158,16 @@ namespace AppGimnasioMVC.Controllers
                 return NotFound();
             }
 
-            var cliente = _contexto.Cliente.Find(id);
-            if (cliente == null)
+            var mensualidad = _contexto.Mensualidad.Where(m => m.Id == id)
+                                            .Include(c => c.Cliente)
+                                            .FirstOrDefault();
+
+            if (mensualidad == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            return View(mensualidad);
         }
 
         [Authorize(Roles = "Administrador")]
@@ -206,14 +175,18 @@ namespace AppGimnasioMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> BorrarRegistro(int? id)
         {
-            var cliente = await _contexto.Cliente.FindAsync(id);
-            if (cliente == null)
+            var mensualidad = _contexto.Mensualidad.Where(m => m.Id == id)
+                                            .Include(c => c.Cliente)
+                                            .FirstOrDefault();
+
+            //var cliente = await _contexto.Cliente.FindAsync(id);
+            if (mensualidad == null)
             {
                 return NotFound();
             }
-            _contexto.Cliente.Remove(cliente);
+            _contexto.Mensualidad.Remove(mensualidad);
             await _contexto.SaveChangesAsync();
-            TempData["Mensaje"] = "El cliente se borró correctamente";
+            TempData["Mensaje"] = "La Mensualidad se borró correctamente";
             return RedirectToAction("Index");
         }
 

@@ -55,8 +55,11 @@ namespace AppGimnasioMVC.Controllers
                 {
                     new Claim(ClaimTypes.Name, usuario.Nombres),
                     new Claim("Correo", usuario.Email),
-                    new Claim(ClaimTypes.Role, usuario.Rol.ToString())
+                    new Claim(ClaimTypes.Role, usuario.Rol.ToString()),
+                    new Claim(ClaimTypes.Email, usuario.Email)
                 };
+
+                ViewData["correo"] = usuario.Email;
 
                 var claimIdenttity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -69,6 +72,7 @@ namespace AppGimnasioMVC.Controllers
 
         public IActionResult Denegado()
         {
+
             return View();
         }
 

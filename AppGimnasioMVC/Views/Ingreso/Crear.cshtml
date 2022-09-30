@@ -1,0 +1,94 @@
+﻿@model AppGimnasioMVC.Models.IngresoGimnasio
+@{
+    ViewData["Title"] = "Crear Ingreso al Gimnasio";
+}
+@if (TempData["Mensaje"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Datos incorrectos',
+            text: 'El cliente no existe, por favor revise.'
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-sm-7 offset-2">
+        <div class="card border">
+            <div class="card-header">
+                <h2 class="text-center">@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Ingreso" asp-action="Crear" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Número de Identificación</label>
+                        <input class="form-control me-sm-2" type="text" name="filtroIdentificacion" value=@TempData["MIdentificacion"] placeholder="Número de Identificación" />
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+                    </div>
+                </form>
+
+                <form asp-controller="Ingreso" asp-action="Crear" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input class="form-control me-sm-2" type="hidden" name="filtroIdentificacion" value=@TempData["MIdentificacion"] placeholder="Número de Identificación" />
+                    <div class="form-group">
+                        <label asp-for="FechaIngreso" class="control-label"></label>
+                        <input asp-for="FechaIngreso" class="form-control" value="@ViewBag.Fecha"/>
+                        <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cliente.Nombres" class="control-label"></label>
+                        <input asp-for="Cliente.Nombres" class="form-control" placeholder="Ingrese los nombres" readonly />
+                        <span asp-validation-for="Cliente.Nombres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cliente.Apellidos" class="control-label"></label>
+                        <input asp-for="Cliente.Apellidos" class="form-control" placeholder="Ingrese los apellidos" readonly />
+                        <span asp-validation-for="Cliente.Apellidos" class="text-danger"></span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <label class="form-check-label" asp-for="Bloqueado"></label>
+                        <input class="form-check-input" type="checkbox" asp-for="Bloqueado" />
+                        <span asp-validation-for="Bloqueado" class="text-danger"></span>
+                    </div>
+
+                    <!--Enviar el ID del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Id" />
+                    <!--Enviar el NumeroIdentificacion del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.NumeroIdentificacion" />
+                    <!--Enviar el TipoDocIdentificacion del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.TipoDocIdentificacion" />
+                    <!--Enviar el Direccion del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Direccion" />
+                    <!--Enviar el Email del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Email" />
+                    <!--Enviar el Contrasenia del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Contrasenia" />
+                    <!--Enviar el Celular del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Celular" />
+                    <!--Enviar el FechaNacimiento del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.FechaNacimiento" />
+                    <!--Enviar el Genero del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Genero" />
+                    <!--Enviar el Rol del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Rol" />
+                    <!--Enviar el Peso del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Peso" />
+                    <!--Enviar el Bloqueado del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.Bloqueado" />
+                    <!--Enviar el RutinaId del cliente como campo oculto-->
+                    <input type="hidden" asp-for="Cliente.RutinaId" />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Crear Ingreso al Gimnasio</button>
+                        <a asp-action="Index" class="btn btn-primary">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

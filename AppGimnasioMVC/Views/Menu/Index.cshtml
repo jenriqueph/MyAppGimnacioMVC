@@ -7,6 +7,16 @@
         bienvenida('@TempData["xxx"]');
     }
 </script>
+@if (TempData["Mensaje2"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Buen trabajo!',
+            text: '@TempData["Mensaje2"].'
+                });
+    </script>
+}
 
 <div class="row">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
@@ -33,7 +43,7 @@
                     </a>
                 </li>
             }
-            @if (User.IsInRole("Administrador") || User.IsInRole("Cliente"))
+            @if (User.IsInRole("Administrador"))
             {
                 <li>
                     <a asp-action="Index" asp-controller="Ingreso" class="nav-link link-dark">
@@ -42,6 +52,16 @@
                     </a>
                 </li>
             }
+            else if (User.IsInRole("Cliente"))
+            {
+                <li>
+                    <a asp-action="CrearCliente" asp-controller="Ingreso" class="nav-link link-dark">
+                        <img src="~/img/Avatar-Ingreso.png" width="20" height="20">
+                        Ingresos
+                    </a>
+                </li>
+            }
+
             @if (User.IsInRole("Administrador") || User.IsInRole("Entrenador"))
             {
                 <li>

@@ -4,3 +4,9 @@
 <div>
     <h1 class="text-warning text-center">@ViewData["Title"]</h1>
 </div>
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <h4 class="alert-heading">¡Advertencia!</h4>
+    <p class="mb-0">Usuario, usted no tiene permiso para esta opción. Cominiquese con el Administrador, <a asp-action="Index" asp-controller="Menu" class="alert-link">ir al menu</a>.</p>
+</div>
+<a asp-action="Index" asp-controller="Menu" class="btn btn-primary">Menu</a>

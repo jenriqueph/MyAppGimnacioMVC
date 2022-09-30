@@ -33,6 +33,20 @@
                         </li>
                     </ul>
                 </div>
+                <div>
+                    @if (@User.Identity.Name != null)
+                    {
+                        var userClaims = User.Claims.ToList();
+                        var useremail = userClaims.ElementAt(1).Value;
+                        <a class="nav-link text-white"> Hola, User: <span style="color:yellow">@User.Identity.Name</span>  e-mail: <span style="color:yellow">@useremail</span></a>
+                    }
+                    else
+                    {
+                        <div class="spinner-grow text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    }
+                </div>
             </div>
         </nav>
     </header>

@@ -42,14 +42,14 @@ namespace AppGimnasioMVC.Controllers
             return View(await rutinas.ToListAsync());
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Entrenador")]
         [HttpGet]
         public IActionResult Crear()
         {
             return View();
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Entrenador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Crear(Rutina rutina)
@@ -64,7 +64,7 @@ namespace AppGimnasioMVC.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Entrenador")]
         [HttpGet]
         public IActionResult Detalle(int? id)
         {
@@ -82,7 +82,7 @@ namespace AppGimnasioMVC.Controllers
             return View(rutina);
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Entrenador")]
         [HttpGet]
         public IActionResult Editar(int? id)
         {
@@ -100,7 +100,7 @@ namespace AppGimnasioMVC.Controllers
             return View(rutina);
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Entrenador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Editar(Rutina rutina)

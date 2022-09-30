@@ -71,12 +71,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/Borrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xCb3JyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xDcmVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/CrearCliente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xDcmVhckNsaWVudGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xEZXRhbGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Ingreso/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVzb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Mensualidad/Borrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVuc3VhbGlkYWRcQm9ycmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Mensualidad/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVuc3VhbGlkYWRcQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Mensualidad/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVuc3VhbGlkYWRcRGV0YWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Mensualidad/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVuc3VhbGlkYWRcRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Desarrollo de Software/Proyectos/AppGimnasioMVC/AppGimnasioMVC/Views/Mensualidad/Index.cshtml]

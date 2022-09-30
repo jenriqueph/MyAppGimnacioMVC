@@ -1,0 +1,28 @@
+﻿@model AppGimnasioMVC.Models.Mensualidad
+@{
+    ViewData["Title"] = "Detalle Mensualidad";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">@ViewData["Title"]: @Html.DisplayFor(m => m.Id)</h2>
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">@Html.DisplayNameFor(m => m.Fecha): @Html.DisplayFor(m => m.Fecha)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.FechaInicio): @Html.DisplayFor(m => m.FechaInicio)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.FechaFin): @Html.DisplayFor(m => m.FechaFin)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.ValorMensualidad): @Html.DisplayFor(m => m.ValorMensualidad)</li>
+                <li class="list-group-item active" aria-current="true">@Html.DisplayNameFor(m => m.Cliente.NumeroIdentificacion): @Html.DisplayFor(m => m.Cliente.NumeroIdentificacion)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Cliente.Nombres): @Html.DisplayFor(m => m.Cliente.Nombres)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Cliente.Apellidos): @Html.DisplayFor(m => m.Cliente.Apellidos)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Cliente.Email): @Html.DisplayFor(m => m.Cliente.Email)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Cliente.Celular): @Html.DisplayFor(m => m.Cliente.Celular)</li>
+                <li class="list-group-item">@Html.DisplayNameFor(m => m.Bloqueado): @Html.DisplayFor(m => m.Bloqueado)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-primary">Regresar</a>
+        </div>
+    </div>
+</div>

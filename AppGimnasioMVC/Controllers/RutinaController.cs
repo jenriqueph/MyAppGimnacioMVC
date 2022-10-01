@@ -1,9 +1,11 @@
 ﻿using AppGimnasioMVC.Datos;
+using AppGimnasioMVC.Migrations;
 using AppGimnasioMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Net.WebSockets;
 
 namespace AppGimnasioMVC.Controllers
 {
@@ -81,6 +83,32 @@ namespace AppGimnasioMVC.Controllers
 
             return View(rutina);
         }
+
+
+        [Authorize(Roles = "Cliente")]
+        [HttpGet]
+        public IActionResult DetalleCliente()
+        {
+            //ViewData["Fecha"] = (String.Format("{0:yyyy-MM-dd}", DateTime.Now));
+            var userClaims = User.Claims.ToList();
+            var useremail = userClaims.ElementAt(1).Value;
+
+            var clientes = _contexto.Cliente.Where(c => c.Email == useremail)
+                                        .Include(r => r.Rutina)
+                                        .FirstOrDefault();
+
+            if (clientes == null || clientes.Rutina == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View(clientes);
+            }
+
+        }
+
+
 
         [Authorize(Roles = "Administrador, Entrenador")]
         [HttpGet]

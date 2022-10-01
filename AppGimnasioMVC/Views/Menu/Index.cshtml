@@ -70,7 +70,16 @@
                         Rutinas
                     </a>
                 </li>
+            }else if (User.IsInRole("Cliente"))
+            {
+                <li>
+                    <a asp-action="DetalleCliente" asp-controller="Rutina" class="nav-link link-dark">
+                        <img src="~/img/Avatar-Rutina.png" width="20" height="20">
+                        Rutinas
+                    </a>
+                </li>
             }
+
             @if (User.IsInRole("Administrador") || User.IsInRole("Entrenador"))
             {
                 <li>
